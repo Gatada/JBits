@@ -1,24 +1,32 @@
 # REST Inspired Rewrite Rules
 # Not yet tried this, but seems to me that these rewrite rules
-# should work pretty well with a REST based API. Comments?
+# should work pretty well with a REST based API.
+# Please leave your comments at GitHub!
+
+# Disabling caching in PHP
+# Caching has to be disabled before the PHP script runs:
+php_flag opcache.enable Off
+
+# Enable rewriting of /api/ calls
+RewriteEngine On
+RewriteBase /api/
 
 # REST Action without a Query String
 # Rewrite rules for API Version and Action, without a query string:
 # http://yourdomain.com/api/v1/someAction/someId ->
 # http://yourdomain.com/api/index.php?api=v1&action=someAction/someId
-
-RewriteEngine On
-RewriteBase /api/
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2 [N]
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2 [N]
 
 # REST Action with Query String
 # Rewrite for API Version and Action with an additional query string:
 # http://yourdomain.com/api/v1/someAction/someId?query=string ->
 # http://yourdomain.com/api/index.php?api=v1&action=someAction/someId&query=string
-
 RewriteCond %{QUERY_STRING} .
-RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [L]
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [L]
+
+# Finally disable caching
+RewriteRule (.*) - [L,E=Cache-Control:no-cache]
