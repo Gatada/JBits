@@ -2,7 +2,11 @@
 # Not yet tried this, but seems to me that these rewrite rules
 # should work pretty well with a REST based API. Comments?
 
-# Rewrite rules for API Version and Action, without a query string
+# REST Action without a Query String
+# Rewrite rules for API Version and Action, without a query string:
+# http://yourdomain.com/api/v1/someAction/someId ->
+# http://yourdomain.com/api/index.php?api=v1&action=someAction/someId
+
 RewriteEngine On
 RewriteBase /api/
 RewriteCond %{QUERY_STRING} ^$
@@ -11,6 +15,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2 [N]
 
-# Rewrite for API Version and Action with an additional query string
+# REST Action with Query String
+# Rewrite for API Version and Action with an additional query string:
+# http://yourdomain.com/api/v1/someAction/someId?query=string ->
+# http://yourdomain.com/api/index.php?api=v1&action=someAction/someId&query=string
+
 RewriteCond %{QUERY_STRING} .
 RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [L]
