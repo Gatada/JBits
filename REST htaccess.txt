@@ -1,0 +1,16 @@
+# REST Inspired Rewrite Rules
+# Not yet tried this, but seems to me that these rewrite rules
+# should work pretty well with a REST based API. Comments?
+
+# Rewrite rules for API Version and Action, without a query string
+RewriteEngine On
+RewriteBase /api/
+RewriteCond %{QUERY_STRING} ^$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2 [N]
+
+# Rewrite for API Version and Action with an additional query string
+RewriteCond %{QUERY_STRING} .
+RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [L]
