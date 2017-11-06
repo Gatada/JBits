@@ -1,7 +1,20 @@
-# REST Inspired Rewrite Rules
-# Not yet tried this, but seems to me that these rewrite rules
-# should work pretty well with a REST based API.
-# Please leave your comments at GitHub!
+# REST configuration of Apache Web Server software
+# by Johan Basberg
+
+# Valid requests format with optional query string:
+# <domain>/api/v<integer>/<action>[request string]
+
+# <domain> the domain where this file resides.
+# <integer> the version number of the API.
+# <action> verbs, entities, identifiers and any number of backslashes.
+# [request string] is an optional request string.
+
+# Example requests:
+# http://domain.com/api/v1/users/1?session=abcd1234
+# http://domain.com/api/v1/users?session=abcd1234;product=calendar
+# http://domain.com/api/v1/getUsers
+
+# --------------------------------------------------------------------
 
 # Disabling caching in PHP
 # Caching has to be disabled before the PHP script runs:
@@ -9,24 +22,27 @@ php_flag opcache.enable Off
 
 # Enable rewriting of /api/ calls
 RewriteEngine On
+
+# Replace /api/ with the relative path to your endpoint
 RewriteBase /api/
 
 # REST Action without a Query String
 # Rewrite rules for API Version and Action, without a query string:
-# http://yourdomain.com/api/v1/someAction/someId ->
-# http://yourdomain.com/api/index.php?api=v1&action=someAction/someId
+# http://yourdomain.com/api/v1/requiredAction/someId ->
+# http://yourdomain.com/api/index.php?api=v1&action=requiredAction/someId
 RewriteCond %{QUERY_STRING} ^$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2 [N]
+RewriteCond %{REQUEST_URI} /v([0-9]+)/([a-zA-Z0-9\/]+)
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2 [N]
 
 # REST Action with Query String
 # Rewrite for API Version and Action with an additional query string:
-# http://yourdomain.com/api/v1/someAction/someId?query=string ->
-# http://yourdomain.com/api/index.php?api=v1&action=someAction/someId&query=string
+# http://yourdomain.com/api/v1/requiredAction/someId?query=string ->
+# http://yourdomain.com/api/index.php?api=v1&action=requiredAction/someId&query=string
 RewriteCond %{QUERY_STRING} .
-RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)?/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [L]
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [N]
 
 # Finally disable caching
 RewriteRule (.*) - [L,E=Cache-Control:no-cache]
