@@ -23,10 +23,14 @@ php_flag opcache.enable Off
 # Enable rewriting of /api/ calls
 RewriteEngine On
 
+# Disable caching
+RewriteRule .? - [ENV="Cache-Control: no-cache, must-revalidate",ENV="Pragma: no-cache"]
+
 # Replace /api/ with the relative path to your endpoint
 RewriteBase /api/
 
 # REST Action without a Query String
+# If there is a match, no additional rules will be executed.
 # Rewrite rules for API Version and Action, without a query string:
 # http://yourdomain.com/api/v1/requiredAction/someId ->
 # http://yourdomain.com/api/index.php?api=v1&action=requiredAction/someId
@@ -35,14 +39,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_URI} /v([0-9]+)/([a-zA-Z0-9\/]+)
-RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2 [N]
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2 [last]
 
 # REST Action with Query String
 # Rewrite for API Version and Action with an additional query string:
 # http://yourdomain.com/api/v1/requiredAction/someId?query=string ->
 # http://yourdomain.com/api/index.php?api=v1&action=requiredAction/someId&query=string
 RewriteCond %{QUERY_STRING} .
-RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [N]
-
-# Finally disable caching
-RewriteRule (.*) - [L,E=Cache-Control:no-cache]
+RewriteRule ^v([0-9]+)/([a-zA-Z0-9\/]+)/?$ index.php?api=$1&action=$2&%{QUERY_STRING} [last]
