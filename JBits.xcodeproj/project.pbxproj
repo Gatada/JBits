@@ -34,6 +34,7 @@
 		04A909C223A94A4B00B3E037 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				04A909C323A94A6A00B3E037 /* Log.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -68,7 +69,6 @@
 		4C1A574922E09A7700D138C2 /* Decorators */ = {
 			isa = PBXGroup;
 			children = (
-				04A909C323A94A6A00B3E037 /* Log.swift */,
 				4C1A574A22E09A8800D138C2 /* UIColor.swift */,
 			);
 			path = Decorators;
