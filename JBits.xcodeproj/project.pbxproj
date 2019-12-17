@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
 		4C1A574322E09A4900D138C2 /* JBits.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1A574122E09A4900D138C2 /* JBits.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A574A22E09A8800D138C2 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04A909C323A94A6A00B3E037 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		4C1A573E22E09A4900D138C2 /* JBits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A574122E09A4900D138C2 /* JBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBits.h; sourceTree = "<group>"; };
 		4C1A574222E09A4900D138C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -29,6 +31,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A909C223A94A4B00B3E037 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		4C1A573422E09A4900D138C2 = {
 			isa = PBXGroup;
 			children = (
@@ -48,6 +57,7 @@
 		4C1A574022E09A4900D138C2 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				04A909C223A94A4B00B3E037 /* Library */,
 				4C1A574922E09A7700D138C2 /* Decorators */,
 				4C1A574122E09A4900D138C2 /* JBits.h */,
 				4C1A574222E09A4900D138C2 /* Info.plist */,
@@ -58,6 +68,7 @@
 		4C1A574922E09A7700D138C2 /* Decorators */ = {
 			isa = PBXGroup;
 			children = (
+				04A909C323A94A6A00B3E037 /* Log.swift */,
 				4C1A574A22E09A8800D138C2 /* UIColor.swift */,
 			);
 			path = Decorators;
@@ -142,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A909C423A94A6A00B3E037 /* Log.swift in Sources */,
 				4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
