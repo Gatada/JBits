@@ -156,16 +156,17 @@ public enum Log {
     }
     
 
-    /// Use to temporary log events in the Xcode Console.
+    /// Use to temporary log events in the Xcode debug area (the console).
     ///
     /// These calls will be completely removed for release or any non-debugging build.
     public static func tmp(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
         assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, subsystem: subsystem))
     }
     
-    /// Use to send a default-level message to the OS logging system.
+    /// Use to send messages to the OS logging system.
     ///
-    /// These message received will be retained in a cyclic buffer,
+    /// The messages received will be retained in a cyclic buffer managed
+    /// by the operating system.
     ///
     /// - Note:
     /// To enable logging with the OS logging system the `OS_ACTIVITY_MODE` option found
