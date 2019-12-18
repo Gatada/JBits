@@ -27,13 +27,13 @@ public enum Log {
         /// Logs of this kind are usually added to track execution flow or show state information
         /// that is not useful once the feature is fully developed or refactored. Logs in this category
         /// are usually removed before the code is committed.
-        case `default` = "Default"
+        case `default`
         
         /// Used to log state information.
         ///
         /// Info logs will usually be left in the application even
         /// after the feature is fully implemented.
-        case info = "Info"
+        case info
         
         /// Used for debug related state expectations during development.
         ///
@@ -52,7 +52,7 @@ public enum Log {
         ///
         /// Debug output should usually be removed after the feature has been
         /// fully implemented.
-        case debug = "Debug"
+        case debug
         
         /// Used for to log unintended behaviour caused by bugs.
         ///
@@ -62,14 +62,14 @@ public enum Log {
         ///
         /// Fault logs are useful for the inevitable refactoring and should
         /// therefore not be removed.
-        case fault = "Fault"
+        case fault
         
         /// Used to log a failure to fulfill performance requirements.
         ///
         /// Tests can be used to prevent failure. Assertions can also be
         /// used to catch or inform the developer about failures even
         /// before testing begins.
-        case failure = "Failure"
+        case failure
         
         /// A suitable emoji that marks the beginning of a log message.
         var emoji: StaticString {
