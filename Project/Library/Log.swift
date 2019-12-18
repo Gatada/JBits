@@ -22,10 +22,11 @@ public enum Log {
     /// given process.
     public enum Category: String {
         
-        /// The `default` log level used for general output.
+        /// Used for general and usually temporary output.
         ///
-        /// Logs of this kind are usually temporary, and are therefore
-        /// removed after the feature has been completely implemented.
+        /// Logs of this kind are usually added to track execution flow or show state information
+        /// that is not useful once the feature is fully developed or refactored. Logs in this category
+        /// are usually removed before the code is committed.
         case `default` = "Default"
         
         /// The `info` log level used to output state information.
@@ -34,8 +35,7 @@ public enum Log {
         /// after the feature is fully implemented.
         case info = "Info"
         
-        /// The `debug` log level is used to log state expectations
-        /// to prevent errors.
+        /// Used to log debug related state expectations during development.
         ///
         /// An error marks the result of a bug. Errors are hard to catch,
         /// which is why debug logs are some times used.
@@ -50,12 +50,11 @@ public enum Log {
         ///
         /// `Expecting 5 == 4`
         ///
-        /// Debug output will usually be removed after the feature has been
+        /// Debug output should usually be removed after the feature has been
         /// fully implemented.
         case debug = "Debug"
         
-        /// A `fault` indicates unintended behaviour usually as a result
-        /// of an error.
+        /// Used for to log unintended behaviour caused by bugs.
         ///
         /// When an application executes code that were not suppose to be
         /// reached, you experience a fault. A fault could be a non-critical anomaly
@@ -65,7 +64,7 @@ public enum Log {
         /// therefore not be removed.
         case fault = "Fault"
         
-        /// A failure is the formal inability to fulfill performance requirements.
+        /// Used to log a failure to fulfill performance requirements.
         ///
         /// Tests can be used to prevent failure. Assertions can also be
         /// used to catch or inform the developer about failures even
@@ -164,7 +163,7 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
-    public static func da(_ messages: String..., log: Log.Category = .default, subsystem: String = Log.mainBundle, terminator: String = "\n") {
+    public static func da(_ messages: String..., log: Log.Category, subsystem: String = Log.mainBundle, terminator: String = "\n") {
         assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, subsystem: subsystem))
     }
 
@@ -187,7 +186,7 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
-    public static func both(_ messages: String..., log: Log.Category = .default, subsystem: String = Log.mainBundle, terminator: String = "\n") {
+    public static func both(_ messages: String..., log: Log.Category, subsystem: String = Log.mainBundle, terminator: String = "\n") {
         var resultingMessage = ""
         var space = ""
         
