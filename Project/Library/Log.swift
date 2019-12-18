@@ -188,13 +188,10 @@ public enum Log {
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
     public static func both(_ messages: String..., log: Log.Category, subsystem: String = Log.mainBundle, terminator: String = "\n") {
         var resultingMessage = ""
-        var space = ""
-        
         for message in messages {
-            resultingMessage += space + message
-            space = " "
+            resultingMessage += " \(message)"
         }
-        os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) - \(resultingMessage)\(terminator)")
+        os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) -\(resultingMessage)\(terminator)")
     }
 
 }
