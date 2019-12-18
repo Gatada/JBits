@@ -161,10 +161,10 @@ public enum Log {
     ///
     /// - Parameters:
     ///   - messages: A variadic parameter of strings to print in the debug area.
-    ///   - terminator: The string appended to the message. By default this is `\n`.
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    public static func da(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
+    ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
+    public static func da(_ messages: String..., log: Log.Category = .default, subsystem: String = Log.mainBundle, terminator: String = "\n") {
         assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, subsystem: subsystem))
     }
 
@@ -184,13 +184,18 @@ public enum Log {
     ///
     /// - Parameters:
     ///   - messages: A variadic parameter of strings to print in the debug area.
-    ///   - terminator: The string appended to the message showing up in the debug area in Xcode. By default this is `\n`.
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    public static func both(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
+    ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
+    public static func both(_ messages: String..., log: Log.Category = .default, subsystem: String = Log.mainBundle, terminator: String = "\n") {
+        var resultingMessage = ""
+        var space = ""
+        
         for message in messages {
-            os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) - \(message)")
+            resultingMessage += space + message
+            space = " "
         }
+        os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) - \(resultingMessage)\(terminator)")
     }
 
 }
