@@ -29,13 +29,13 @@ public enum Log {
         /// are usually removed before the code is committed.
         case `default` = "Default"
         
-        /// The `info` log level used to output state information.
+        /// Used to log state information.
         ///
         /// Info logs will usually be left in the application even
         /// after the feature is fully implemented.
         case info = "Info"
         
-        /// Used to log debug related state expectations during development.
+        /// Used for debug related state expectations during development.
         ///
         /// An error marks the result of a bug. Errors are hard to catch,
         /// which is why debug logs are some times used.
