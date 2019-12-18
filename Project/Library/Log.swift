@@ -145,27 +145,6 @@ public enum Log {
         return true
     }
     
-    /// Call with one or more messages to generate an equal number of messages in the OS logging system.
-    ///
-    /// Each string in the messages array will generate one message in the Console.
-    ///
-    /// To review the resulting log messages please launch the Console app on your Mac.
-    /// Make sure you have selected the correct device when browsing the messages.
-    ///
-    /// - Note:
-    /// To enable logging with the OS logging system the `OS_ACTIVITY_MODE` option found
-    /// in the the build scheme cannot be disabled.
-    ///
-    /// - Parameters:
-    ///   - messages: An array of strings, each resulting in a message sent to the OS logging system.
-    ///   - log: Use this to group logs into a suitable `Category`.
-    ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    private static func osPrint(_ messages: [String], log: Log.Category, subsystem: String) {
-        for message in messages {
-            os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) - \(message)")
-        }
-    }
-    
     
     /// Creates a timestamp used as part of the temporary logging in the debug area.
     static func timestamp() -> String {
@@ -176,7 +155,7 @@ public enum Log {
     }
     
 
-    /// Use to temporary log events in the Xcode debug area (the console).
+    /// Use to temporary log events in the Xcode debug area.
     ///
     /// These calls will be completely removed for release or any non-debugging build.
     ///
@@ -185,43 +164,23 @@ public enum Log {
     ///   - terminator: The string appended to the message. By default this is `\n`.
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    public static func tmp(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
+    public static func da(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
         assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, subsystem: subsystem))
     }
+
     
-    /// Use to send messages to the OS logging system.
+    /// Send one or more messages to both the Xcode debug area and the OS logging system.
     ///
-    /// The messages received will be retained in a ring buffer managed
+    /// The messages received by the logging system are retained in a ring buffer managed
     /// by the operating system. All received log messages can be exported on the device,
-    /// however the file is usually very large (probably too large to send by email).
+    /// however the file is usually quite large (probably too large to send by email).
     ///
     /// To review the log messages in real time please launch the Console app on your Mac.
     /// Make sure you have selected the correct device when browsing the messages.
     ///
-    /// - Note:
-    /// To enable logging with the OS logging system the `OS_ACTIVITY_MODE` option found
-    /// in the the build scheme cannot be disabled.
-    ///
-    /// - Parameters:
-    ///   - messages: A variadic parameter of strings to print in the debug area.
-    ///   - log: Use this to group logs into a suitable `Category`.
-    ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    public static func os(_ messages: String..., log: Log.Category = .default, subsystem: String = Log.mainBundle) {
-        osPrint(messages, log: log, subsystem: subsystem)
-    }
-    
-    /// Send a message to both the Xcode debug area and the OS logging system.
-    ///
-    /// The messages received will be retained in a ring buffer managed
-    /// by the operating system. All received log messages can be exported on the device,
-    /// however the file is usually very large (probably too large to send by email).
-    ///
-    /// To review the log messages in real time please launch the Console app on your Mac.
-    /// Make sure you have selected the correct device when browsing the messages.
-    ///
-    /// - Note:
-    /// To enable logging with the OS logging system the `OS_ACTIVITY_MODE` option found
-    /// in the the build scheme cannot be disabled.
+    /// - Important:
+    /// Nothing will be seen in the debug area or the OS logging system if `OS_ACTIVITY_MODE` is disabled
+    /// in the the build scheme for the target.
     ///
     /// - Parameters:
     ///   - messages: A variadic parameter of strings to print in the debug area.
@@ -229,8 +188,9 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     public static func both(_ messages: String..., terminator: String = "\n", log: Log.Category = .default, subsystem: String = Log.mainBundle) {
-        osPrint(messages, log: log, subsystem: subsystem)
-        assert(Log.debugAreaPrint(messages, terminator: "\n", log: log, subsystem: subsystem))
+        for message in messages {
+            os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(log.emoji) \(subsystem) - \(message)")
+        }
     }
 
 }
