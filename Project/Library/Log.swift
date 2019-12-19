@@ -186,7 +186,7 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
-    public static func both(_ messages: String..., log: Log.Category, subsystem: String = Log.mainBundle, terminator: String = "\n") {
+    public static func os(_ messages: String..., log: Log.Category, subsystem: String = Log.mainBundle, terminator: String = "\n") {
         var resultingMessage = ""
         for message in messages {
             resultingMessage += " \(message)"
