@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
+		04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */; };
 		4C1A574322E09A4900D138C2 /* JBits.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1A574122E09A4900D138C2 /* JBits.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A574A22E09A8800D138C2 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04A909C323A94A6A00B3E037 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFilledButton.swift; sourceTree = "<group>"; };
 		4C1A573E22E09A4900D138C2 /* JBits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A574122E09A4900D138C2 /* JBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBits.h; sourceTree = "<group>"; };
 		4C1A574222E09A4900D138C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,12 +33,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04A909C223A94A4B00B3E037 /* Library */ = {
+		04A909C223A94A4B00B3E037 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				04A909C323A94A6A00B3E037 /* Log.swift */,
 			);
-			path = Library;
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		04E3B56323EA178C001BA654 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */,
+			);
+			path = "User Interface";
 			sourceTree = "<group>";
 		};
 		4C1A573422E09A4900D138C2 = {
@@ -58,7 +68,8 @@
 		4C1A574022E09A4900D138C2 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				04A909C223A94A4B00B3E037 /* Library */,
+				04E3B56323EA178C001BA654 /* User Interface */,
+				04A909C223A94A4B00B3E037 /* Utility */,
 				4C1A574922E09A7700D138C2 /* Decorators */,
 				4C1A574122E09A4900D138C2 /* JBits.h */,
 				4C1A574222E09A4900D138C2 /* Info.plist */,
@@ -153,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */,
 				04A909C423A94A6A00B3E037 /* Log.swift in Sources */,
 				4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */,
 			);
@@ -294,7 +306,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JBits/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Project/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -321,7 +333,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = JBits/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Project/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

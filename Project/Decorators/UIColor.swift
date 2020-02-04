@@ -25,4 +25,15 @@ extension UIColor {
         return UIColor(hue: hue, saturation: saturation, brightness: ((brightness + 0.5).truncatingRemainder(dividingBy: 1)), alpha: alpha)
     }
     
+    /// Returns a color with an adjusted for the shadow factor.
+    ///
+    /// - Parameter shadow: The darkness level of the shadow; 1 is black, 0 results in no shadow.
+    /// - Returns: A new color with the shadow factor subtracted.
+    func withShadowComponent(_ shadow: CGFloat) -> UIColor {
+        let shadow = 1 - shadow
+        var red: CGFloat = 1, green: CGFloat = 1, blue: CGFloat = 1, alpha: CGFloat = 1
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return UIColor(red: red * shadow, green: green * shadow, blue: blue * shadow, alpha: alpha)
+    }
+    
 }
