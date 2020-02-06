@@ -94,18 +94,7 @@ public enum Log {
         
         /// Mapping a Category to a suitable OSLog type.
         var osLogEquivalent: OSLog {
-            switch self {
-            case .default:
-                return OSLog(subsystem: subsystem, category: "default")
-            case .info:
-                return OSLog(subsystem: subsystem, category: "info")
-            case .debug:
-                return OSLog(subsystem: subsystem, category: "debug")
-            case .fault:
-                return OSLog(subsystem: subsystem, category: "fault")
-            case .failure:
-                return OSLog(subsystem: subsystem, category: "failure")
-            }
+            return OSLog(subsystem: subsystem, category: self.rawValue)
         }
         
         /// Maps the Category to a suitable OSLogType.
