@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
+		04B7878323ED7253008398A9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7878223ED7253008398A9 /* Array.swift */; };
 		04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */; };
 		4C1A574322E09A4900D138C2 /* JBits.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1A574122E09A4900D138C2 /* JBits.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A574A22E09A8800D138C2 /* UIColor.swift */; };
@@ -15,6 +16,7 @@
 
 /* Begin PBXFileReference section */
 		04A909C323A94A6A00B3E037 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		04B7878223ED7253008398A9 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFilledButton.swift; sourceTree = "<group>"; };
 		4C1A573E22E09A4900D138C2 /* JBits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A574122E09A4900D138C2 /* JBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBits.h; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				4C1A574A22E09A8800D138C2 /* UIColor.swift */,
+				04B7878223ED7253008398A9 /* Array.swift */,
 			);
 			path = Decorators;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */,
+				04B7878323ED7253008398A9 /* Array.swift in Sources */,
 				04A909C423A94A6A00B3E037 /* Log.swift in Sources */,
 				4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */,
 			);
