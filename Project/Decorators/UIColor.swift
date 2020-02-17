@@ -30,6 +30,7 @@ extension UIColor {
             assertionFailure("Color is not in a compatible color space")
             return self
         }
+        
         return UIColor(hue: hue, saturation: saturation, brightness: ((brightness + 0.5).truncatingRemainder(dividingBy: 1)), alpha: alpha)
     }
 
@@ -54,6 +55,7 @@ extension UIColor {
             assertionFailure("Color is not in a compatible color space")
             return self
         }
+        
         return UIColor(red: red * shadow, green: green * shadow, blue: blue * shadow, alpha: alpha)
     }
 
