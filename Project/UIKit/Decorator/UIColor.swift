@@ -77,17 +77,14 @@ extension UIColor {
     func withShadowComponent(_ shadow: CGFloat) -> UIColor {
         
         let shadow = 1 - shadow
-        var red: CGFloat = 1
-        var green: CGFloat = 1
-        var blue: CGFloat = 1
-        var alpha: CGFloat = 1
+        var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
         
-        guard getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+        guard getRed(&current.red, green: &current.green, blue: &current.blue, alpha: &current.alpha) else {
             assertionFailure("Color is not in a compatible color space")
             return self
         }
-        
-        return UIColor(red: red * shadow, green: green * shadow, blue: blue * shadow, alpha: alpha)
+
+        return UIColor(red: current.red * shadow, current.green: green * shadow, current.blue: blue * shadow, alpha: current.alpha)
     }
 
     
