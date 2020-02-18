@@ -9,13 +9,15 @@
 import UIKit
 
 
+/// A button that makes the background fill color appear as if it was
+/// an image; i.e. highlighting works as is commonly expected in iOS.
 class BackgroundFilledButton: UIButton {
     
     override var buttonType: UIButton.ButtonType {
         return .custom
     }
     
-    var backgroundFill: UIColor?
+    private var backgroundFill: UIColor?
     
     override var isHighlighted: Bool {
         didSet {

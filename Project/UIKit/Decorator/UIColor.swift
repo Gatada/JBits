@@ -9,12 +9,43 @@ import UIKit
 
 extension UIColor {
     
+    /// Initialize a color from a hex value. Optionally include an alpha value, which defaults
+    /// to 1 (no transparency).
+    ///
+    /// The hexidecimal is not case sensitive.
+    ///
+    /// To instantiate a UIColor using a hex value, you'll need to format the integer as a
+    /// hexidecimal value. You do this by adding the hexidecimal prefix to the number: `0x`
+    ///
+    /// # Examples:
+    /// ```swift
+    /// UIColor(hex: 0xff0000) // Red
+    /// UIColor(hex: 0xCDCDCD) // Gray
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - hex: The integer that will be resolved to the red, green and blue color component.
+    ///   - alpha: The alpha value of the color, default is 1 (full opacity, or no transparency).
+    convenience init?(hex: UInt, alpha: CGFloat = 1) {
+          
+        guard hex <= 0xFFFFFF else {
+            // Value is out of range; an invalid color
+            return nil
+        }
+        
+        let red = CGFloat((hex & 0xFF0000) >> 16)/255
+        let green = CGFloat((hex & 0x00FF00) >> 8)/255
+        let blue = CGFloat(hex & 0x0000FF)/255
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
+    
+    
     /// Returns a new `UIColor` that will have a brightness
-    /// offset that makes it stand out from the source color.
+    /// offset of 1, making it stand out from the source color.
     ///
     /// This is quite useful when you need to dynamically find a color that is
-    /// easily readable, that stands out from the background, while also being
-    /// pleasing to the eye when shown next to or on top of the source color.
+    /// easily readable against a backdrop, while also being easy on the eyes
+    /// when shown next to or on top of the source color.
     ///
     /// If the color is not in a compatible color space, the returned color will
     /// be the same as the source color (i.e. unchanged); additionally an assert
@@ -26,7 +57,7 @@ extension UIColor {
         var brightness: CGFloat = 1
         var alpha: CGFloat = 1
         
-        guard getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha), "Color is not UIColor.getHue compatible.") else {
+        guard getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else {
             assertionFailure("Color is not in a compatible color space")
             return self
         }
