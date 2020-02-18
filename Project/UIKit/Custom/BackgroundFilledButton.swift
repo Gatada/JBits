@@ -9,16 +9,21 @@
 import UIKit
 
 
-/// A button that makes the background fill color appear as if it was
+/// A button that makes the background fill color behave as if it was
 /// an image; i.e. highlighting works as is commonly expected in iOS.
 class BackgroundFilledButton: UIButton {
     
+    /// This is a custom button that will not  behave as expected without
+    /// being a `.custom` button type.
     override var buttonType: UIButton.ButtonType {
         return .custom
     }
     
+    /// Used to retain original background color.
     private var backgroundFill: UIColor?
     
+    /// While the button is higlighted a 30% shadow is added to the
+    /// background color.
     override var isHighlighted: Bool {
         didSet {
             if backgroundFill == nil {

@@ -12,6 +12,10 @@
 		0413EAAA23FC3B9200A91BAE /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAA923FC3B9200A91BAE /* URL.swift */; };
 		0413EAAC23FC4EEC00A91BAE /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAAB23FC4EEC00A91BAE /* NSCharacterSet.swift */; };
 		0413EAAE23FC549800A91BAE /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAAD23FC549800A91BAE /* UIResponder.swift */; };
+		0413EAB423FC863800A91BAE /* TitleUnderImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB323FC863800A91BAE /* TitleUnderImageButton.swift */; };
+		0413EAB623FC876600A91BAE /* String+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB523FC876600A91BAE /* String+Currency.swift */; };
+		0413EAB823FC8EC400A91BAE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB723FC8EC400A91BAE /* UIView.swift */; };
+		0413EABA23FC983000A91BAE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB923FC983000A91BAE /* Font.swift */; };
 		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
 		04B7878323ED7253008398A9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7878223ED7253008398A9 /* Array.swift */; };
 		04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */; };
@@ -25,6 +29,10 @@
 		0413EAA923FC3B9200A91BAE /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		0413EAAB23FC4EEC00A91BAE /* NSCharacterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
 		0413EAAD23FC549800A91BAE /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
+		0413EAB323FC863800A91BAE /* TitleUnderImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleUnderImageButton.swift; sourceTree = "<group>"; };
+		0413EAB523FC876600A91BAE /* String+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Currency.swift"; sourceTree = "<group>"; };
+		0413EAB723FC8EC400A91BAE /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		0413EAB923FC983000A91BAE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		04A909C323A94A6A00B3E037 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		04B7878223ED7253008398A9 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFilledButton.swift; sourceTree = "<group>"; };
@@ -68,6 +76,8 @@
 			children = (
 				4C1A574A22E09A8800D138C2 /* UIColor.swift */,
 				0413EAAD23FC549800A91BAE /* UIResponder.swift */,
+				0413EAB723FC8EC400A91BAE /* UIView.swift */,
+				0413EAB923FC983000A91BAE /* Font.swift */,
 			);
 			path = Decorator;
 			sourceTree = "<group>";
@@ -76,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */,
+				0413EAB323FC863800A91BAE /* TitleUnderImageButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -121,6 +132,7 @@
 				04B7878223ED7253008398A9 /* Array.swift */,
 				0413EAA523FC39A100A91BAE /* Collection.swift */,
 				0413EAA723FC3A6900A91BAE /* String.swift */,
+				0413EAB523FC876600A91BAE /* String+Currency.swift */,
 				0413EAA923FC3B9200A91BAE /* URL.swift */,
 				0413EAAB23FC4EEC00A91BAE /* NSCharacterSet.swift */,
 			);
@@ -207,11 +219,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0413EAA823FC3A6900A91BAE /* String.swift in Sources */,
+				0413EAB423FC863800A91BAE /* TitleUnderImageButton.swift in Sources */,
 				0413EAAC23FC4EEC00A91BAE /* NSCharacterSet.swift in Sources */,
 				04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */,
+				0413EAB823FC8EC400A91BAE /* UIView.swift in Sources */,
 				0413EAA623FC39A100A91BAE /* Collection.swift in Sources */,
 				0413EAAE23FC549800A91BAE /* UIResponder.swift in Sources */,
+				0413EABA23FC983000A91BAE /* Font.swift in Sources */,
 				0413EAAA23FC3B9200A91BAE /* URL.swift in Sources */,
+				0413EAB623FC876600A91BAE /* String+Currency.swift in Sources */,
 				04B7878323ED7253008398A9 /* Array.swift in Sources */,
 				04A909C423A94A6A00B3E037 /* Log.swift in Sources */,
 				4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */,
