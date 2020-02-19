@@ -15,7 +15,7 @@ public class BackgroundFilledButton: UIButton {
     
     /// This is a custom button that will not  behave as expected without
     /// being a `.custom` button type.
-    override var buttonType: UIButton.ButtonType {
+    override public var buttonType: UIButton.ButtonType {
         return .custom
     }
     
@@ -24,7 +24,7 @@ public class BackgroundFilledButton: UIButton {
     
     /// While the button is higlighted a 30% shadow is added to the
     /// background color.
-    override var isHighlighted: Bool {
+    override public var isHighlighted: Bool {
         didSet {
             if backgroundFill == nil {
                 self.backgroundFill = backgroundColor
