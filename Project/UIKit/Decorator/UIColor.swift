@@ -26,7 +26,7 @@ public extension UIColor {
     /// - Parameters:
     ///   - hex: The integer that will be resolved to the red, green and blue color component.
     ///   - alpha: The alpha value of the color, default is 1 (full opacity, or no transparency).
-    public convenience init?(hex: UInt, alpha: CGFloat = 1) {
+    convenience init?(hex: UInt, alpha: CGFloat = 1) {
           
         guard hex <= 0xFFFFFF else {
             // Value is out of range; an invalid color
@@ -50,7 +50,7 @@ public extension UIColor {
     /// If the color is not in a compatible color space, the returned color will
     /// be the same as the source color (i.e. unchanged); additionally an assert
     /// failure is thrown.
-    public func contrastingColor() -> UIColor {
+    func contrastingColor() -> UIColor {
         
         var hue: CGFloat = 1
         var saturation: CGFloat = 1
@@ -74,7 +74,7 @@ public extension UIColor {
     ///
     /// - Parameter shadow: The darkness level of the shadow, 0 is no shadow and 1 is maximum shadow.
     /// - Returns: A new color where a shadow of 1 results in a black color, while 0 returns an unchanged color (no shadow).
-    public func withShadowComponent(_ shadow: CGFloat) -> UIColor {
+    func withShadowComponent(_ shadow: CGFloat) -> UIColor {
         
         let shadow = 1 - shadow
         var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
@@ -98,7 +98,7 @@ public extension UIColor {
     /// failure is thrown.
     ///
     /// - Parameter newSaturation: The new saturation level, ranging from 0 (no change) to 1 (full desaturated).
-    public func withSaturation(_ newSaturation: CGFloat) -> UIColor {
+    func withSaturation(_ newSaturation: CGFloat) -> UIColor {
         
         var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
         
