@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     
     /// A pleasing shake animation using keyframe animations.
     ///

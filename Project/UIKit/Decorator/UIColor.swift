@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     
     /// Initialize a color from a hex value. Optionally include an alpha value, which defaults
     /// to 1 (no transparency).
@@ -26,7 +26,7 @@ extension UIColor {
     /// - Parameters:
     ///   - hex: The integer that will be resolved to the red, green and blue color component.
     ///   - alpha: The alpha value of the color, default is 1 (full opacity, or no transparency).
-    convenience init?(hex: UInt, alpha: CGFloat = 1) {
+    public convenience init?(hex: UInt, alpha: CGFloat = 1) {
           
         guard hex <= 0xFFFFFF else {
             // Value is out of range; an invalid color
@@ -50,7 +50,7 @@ extension UIColor {
     /// If the color is not in a compatible color space, the returned color will
     /// be the same as the source color (i.e. unchanged); additionally an assert
     /// failure is thrown.
-    func contrastingColor() -> UIColor {
+    public func contrastingColor() -> UIColor {
         
         var hue: CGFloat = 1
         var saturation: CGFloat = 1
@@ -74,7 +74,7 @@ extension UIColor {
     ///
     /// - Parameter shadow: The darkness level of the shadow, 0 is no shadow and 1 is maximum shadow.
     /// - Returns: A new color where a shadow of 1 results in a black color, while 0 returns an unchanged color (no shadow).
-    func withShadowComponent(_ shadow: CGFloat) -> UIColor {
+    public func withShadowComponent(_ shadow: CGFloat) -> UIColor {
         
         let shadow = 1 - shadow
         var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
@@ -84,7 +84,7 @@ extension UIColor {
             return self
         }
 
-        return UIColor(red: current.red * shadow, current.green: green * shadow, current.blue: blue * shadow, alpha: current.alpha)
+        return UIColor(red: current.red * shadow, green: current.green * shadow, blue: current.blue * shadow, alpha: current.alpha)
     }
 
     
@@ -98,7 +98,7 @@ extension UIColor {
     /// failure is thrown.
     ///
     /// - Parameter newSaturation: The new saturation level, ranging from 0 (no change) to 1 (full desaturated).
-    func withSaturation(_ newSaturation: CGFloat) -> UIColor {
+    public func withSaturation(_ newSaturation: CGFloat) -> UIColor {
         
         var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
         

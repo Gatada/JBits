@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class TitleUnderImageButton: UIButton {
+public class TitleUnderImageButton: UIButton {
     
     // MARK: - Properties
     
@@ -17,12 +17,12 @@ class TitleUnderImageButton: UIButton {
     
     // MARK: - Life Cycle
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         centerTitleLabel()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         centerTitleLabel()
     }
@@ -39,14 +39,14 @@ class TitleUnderImageButton: UIButton {
     
     // MARK: - Layout
 
-    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
+    override public func titleRect(forContentRect contentRect: CGRect) -> CGRect {
         let titleRect = super.titleRect(forContentRect: contentRect)
         
         // FIXME: Adding an offset is very hacky
         return CGRect(x: (inset/2), y: contentRect.height - titleRect.height, width: contentRect.width - inset, height: titleRect.height)
     }
 
-    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
+    override public func imageRect(forContentRect contentRect: CGRect) -> CGRect {
         let rect = super.imageRect(forContentRect: contentRect)
         let titleRect = self.titleRect(forContentRect: contentRect)
 
@@ -56,7 +56,7 @@ class TitleUnderImageButton: UIButton {
     
     // MARK: - Size Calculation
 
-    override var intrinsicContentSize: CGSize {
+    override public var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
 
         if let image = imageView?.image {

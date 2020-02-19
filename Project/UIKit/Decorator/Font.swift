@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIFont {
+public extension UIFont {
     
     /// Prints the complete list of font families on the device and
     /// all related font names.

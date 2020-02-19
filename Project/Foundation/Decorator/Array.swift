@@ -11,7 +11,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     /// Parses the array to executes the `operation` on each element that returns `true` for `predicate`.
     ///
@@ -19,7 +19,7 @@ extension Array {
     /// - Parameters:
     ///   - predicate: The check that has to return `true` using the current element for the `operation` closure to be executed.
     ///   - operation: This closure that will be executed when the `predicate` returns `true` for an element.
-    public func forEach(where predicate: ((Element) throws -> Bool), do operation: ((Element) throws -> Void)) rethrows {
+    func forEach(where predicate: ((Element) throws -> Bool), do operation: ((Element) throws -> Void)) rethrows {
         for element in self where try predicate(element) {
             try operation(element)
         }

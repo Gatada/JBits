@@ -11,7 +11,7 @@
 
 import Foundation
 
-extension NSCharacterSet {
+public extension NSCharacterSet {
 
     
     /// Returns a character set as an array of strings.

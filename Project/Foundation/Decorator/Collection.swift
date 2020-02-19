@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Collection where Indices.Iterator.Element == Index {
+public extension Collection where Indices.Iterator.Element == Index {
     
     /// Returns the element at the specified index or nil if out of bounds.
     subscript (optional index: Index) -> Iterator.Element? {

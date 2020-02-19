@@ -9,14 +9,14 @@
 import UIKit
 
 /// This extension allows the caller to get the current first responder.
-extension UIResponder {
+public extension UIResponder {
     
     private weak static var currentResponder: UIResponder? = nil
     
     /// Finds and returns the current first responder.
     ///
     /// - returns: The current first responder as an optional UIResponder instance.
-    public class var current: UIResponder? {
+    class var current: UIResponder? {
         UIResponder.currentResponder = nil
         UIApplication.shared.sendAction(#selector(self.findFirstResponder(_:)), to: nil, from: nil, for: nil)
         return UIResponder.currentResponder

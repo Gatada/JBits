@@ -11,7 +11,7 @@ import UIKit
 
 /// A button that makes the background fill color behave as if it was
 /// an image; i.e. highlighting works as is commonly expected in iOS.
-class BackgroundFilledButton: UIButton {
+public class BackgroundFilledButton: UIButton {
     
     /// This is a custom button that will not  behave as expected without
     /// being a `.custom` button type.
