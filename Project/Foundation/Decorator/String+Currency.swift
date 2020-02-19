@@ -19,6 +19,9 @@ public extension String.StringInterpolation {
         case never
     }
     
+    /// The default currency locale used when none is provided to the string interpolation below.
+    static var currencyLocale = Locale(identifier: "en_GB")
+    
     /// Creates a number formatter specifically for currencies and formats
     /// the output according to the decimal style provided.
     ///
@@ -36,7 +39,7 @@ public extension String.StringInterpolation {
     ///   - amount: The integer value including the fraction.
     ///   - showDecimals: The `CurrencyDecimalStyle` which indicates how many digits are shown of the fraction.
     ///   - forcedLocale: The locale with a valid ISO identifier.
-    mutating func appendInterpolation(integerAmount amount: Int, showDecimals: CurrencyDecimalStyle, forcedLocale: Locale = Locale.current) {
+    mutating func appendInterpolation(integerAmount amount: Int, showDecimals: CurrencyDecimalStyle, forcedLocale: Locale = currencyLocale) {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = forcedLocale
