@@ -39,7 +39,7 @@ public extension String.StringInterpolation {
         formatter.numberStyle = .currency
         formatter.locale = forcedLocale
         
-        assert(forcedLocale.currencySymbol != "¤", "Current device does not have a valid region set. Fix this in Settings > Language & Region")
+        assert(forcedLocale.currencySymbol != "¤", "Current device does not have a valid region set. Fix this on the device in Settings > Language & Region")
         
         if showDecimals == .never {
             formatter.roundingMode = .floor
