@@ -39,5 +39,33 @@ public class BackgroundFilledButton: UIButton {
             self.backgroundColor = fill
         }
     }
+    
+    /// The enabled state of the button.
+    ///
+    /// While the button is disabled the background color will be desaturated.
+    override public var isEnabled: Bool {
+        didSet {
+            updateButtonState()
+        }
+    }
+    
+
+    // MARK: - Life Cycle
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        updateButtonState()
+    }
+    
+    
+    // MARK: - Helper
+    
+    private func updateButtonState() {
+        if backgroundFill == nil {
+            backgroundFill = backgroundColor
+        }
+        backgroundColor = isEnabled ? backgroundFill : backgroundFill?.withSaturation(0)
+    }
+
 
 }
