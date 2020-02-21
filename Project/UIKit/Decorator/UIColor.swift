@@ -107,14 +107,16 @@ public extension UIColor {
             return self
         }
 
+        let invertedSaturation = 1 - newSaturation
+
         let brightnessRed = 0.299 * pow(current.red, 2)
         let brightnessGreen = 0.587 * pow(current.green, 2)
         let brightnessBlue = 0.114 * pow(current.blue, 2)
         let perceivedBrightness = sqrt(brightnessRed + brightnessGreen + brightnessBlue)
         
-        let newRed = current.red + newSaturation * (perceivedBrightness - current.red)
-        let newGreen = current.green + newSaturation * (perceivedBrightness - current.green)
-        let newBlue = current.blue + newSaturation * (perceivedBrightness - current.blue)
+        let newRed = current.red + invertedSaturation * (perceivedBrightness - current.red)
+        let newGreen = current.green + invertedSaturation * (perceivedBrightness - current.green)
+        let newBlue = current.blue + invertedSaturation * (perceivedBrightness - current.blue)
         
         return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: current.alpha)
     }
