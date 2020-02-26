@@ -15,7 +15,6 @@
 		0413EAB623FC876600A91BAE /* String+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB523FC876600A91BAE /* String+Currency.swift */; };
 		0413EAB823FC8EC400A91BAE /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB723FC8EC400A91BAE /* UIView.swift */; };
 		0413EABA23FC983000A91BAE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB923FC983000A91BAE /* Font.swift */; };
-		048EA7A32400174F0081B552 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 048EA7A22400174F0081B552 /* Debug.xcconfig */; };
 		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
 		04B7878323ED7253008398A9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7878223ED7253008398A9 /* Array.swift */; };
 		04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */; };
@@ -177,7 +176,7 @@
 		4C1A573522E09A4900D138C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Johan Basberg";
 				TargetAttributes = {
 					4C1A573D22E09A4900D138C2 = {
@@ -209,7 +208,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048EA7A32400174F0081B552 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +292,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
