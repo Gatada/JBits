@@ -17,6 +17,7 @@
 		0413EABA23FC983000A91BAE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0413EAB923FC983000A91BAE /* Font.swift */; };
 		04A909C423A94A6A00B3E037 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A909C323A94A6A00B3E037 /* Log.swift */; };
 		04B7878323ED7253008398A9 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7878223ED7253008398A9 /* Array.swift */; };
+		04B89CED2406AB7E00A36AFA /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B89CEC2406AB7E00A36AFA /* Weak.swift */; };
 		04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */; };
 		4C1A574322E09A4900D138C2 /* JBits.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1A574122E09A4900D138C2 /* JBits.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C1A574B22E09A8800D138C2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A574A22E09A8800D138C2 /* UIColor.swift */; };
@@ -34,6 +35,7 @@
 		048EA7A22400174F0081B552 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		04A909C323A94A6A00B3E037 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		04B7878223ED7253008398A9 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		04B89CEC2406AB7E00A36AFA /* Weak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
 		04E3B56123EA1780001BA654 /* BackgroundFilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFilledButton.swift; sourceTree = "<group>"; };
 		4C1A573E22E09A4900D138C2 /* JBits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JBits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1A574122E09A4900D138C2 /* JBits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JBits.h; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		0413EAB023FC845400A91BAE /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				04B89CEE2406ABC400A36AFA /* Class */,
 				04A909C223A94A4B00B3E037 /* Utility */,
 				4C1A574922E09A7700D138C2 /* Decorator */,
 			);
@@ -95,6 +98,14 @@
 				04A909C323A94A6A00B3E037 /* Log.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		04B89CEE2406ABC400A36AFA /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				04B89CEC2406AB7E00A36AFA /* Weak.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		4C1A573422E09A4900D138C2 = {
@@ -221,6 +232,7 @@
 				0413EAA823FC3A6900A91BAE /* String.swift in Sources */,
 				0413EAB423FC863800A91BAE /* TitleUnderImageButton.swift in Sources */,
 				0413EAAC23FC4EEC00A91BAE /* NSCharacterSet.swift in Sources */,
+				04B89CED2406AB7E00A36AFA /* Weak.swift in Sources */,
 				04E3B56223EA1780001BA654 /* BackgroundFilledButton.swift in Sources */,
 				0413EAB823FC8EC400A91BAE /* UIView.swift in Sources */,
 				0413EAA623FC39A100A91BAE /* Collection.swift in Sources */,
