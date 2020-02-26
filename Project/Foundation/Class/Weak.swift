@@ -9,15 +9,15 @@
 import Foundation
 
 /// A wrapper class to retain a weak reference to an `AnyObject` instance.
-class Weak<T: AnyObject> {
+public class Weak<T: AnyObject> {
     
     // MARK: - Properties
     
-    weak var value: T?
+    public weak var value: T?
     
     // MARK: - Life Cycle
     
-    init (value: T) {
+    public init (value: T) {
         self.value = value
     }
 }
