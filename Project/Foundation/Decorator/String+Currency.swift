@@ -26,7 +26,7 @@ public extension String.StringInterpolation {
     /// # Example
     /// ```
     /// let amount = 120
-    /// print("\(amount, forcedLocale: Locale(identifier: "en_GB"))")
+    /// print("\(integerAmount: amount, forcedLocale: Locale(identifier: "en_GB"))")
     /// // £1.20
     /// ```
     ///
