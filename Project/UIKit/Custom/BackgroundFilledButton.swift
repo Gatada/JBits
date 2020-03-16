@@ -56,6 +56,21 @@ public class BackgroundFilledButton: UIButton {
         super.awakeFromNib()
         updateButtonState()
     }
+
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        updateButtonState()
+    }
+    
+    public required init?(coder aCoder: NSCoder) {
+        super.init(coder: aCoder)
+        updateButtonState()
+    }
+    
+    public override init(frame aFrame: CGRect) {
+        super.init(frame: aFrame)
+        updateButtonState()
+    }
     
     
     // MARK: - Helper
