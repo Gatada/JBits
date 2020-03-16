@@ -8,6 +8,9 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
+//
+// This is based on the Apple Staff tip found at:
+// https://forums.developer.apple.com/message/262876#262876
 
 OTHER_LD_FLAGS = $(inherited) -Wl,MyFramework_ARM
 OTHER_LD_FLAGS[sdk=embeddedsimulator*] = $(inherited) -Wl,MyFramework_Sim 
