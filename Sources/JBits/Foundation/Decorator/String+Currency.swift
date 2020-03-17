@@ -50,18 +50,18 @@ public extension String.StringInterpolation {
         let maximumFraction = formatter.maximumFractionDigits
         let decimalFactor = powf(10, Float(maximumFraction))
         let adjustedAmount = Float(amount) / decimalFactor
-
+        
         switch showDecimals {
         case .always:
             formatter.minimumFractionDigits = maximumFraction
             formatter.maximumFractionDigits = maximumFraction
         case .whenRequired:
             if amount % Int(decimalFactor) > 0 {
-              formatter.minimumFractionDigits = maximumFraction
-              formatter.maximumFractionDigits = maximumFraction
+                formatter.minimumFractionDigits = maximumFraction
+                formatter.maximumFractionDigits = maximumFraction
             } else {
-              // Fallthrough to zero decimals.
-              fallthrough
+                // Fallthrough to zero decimals.
+                fallthrough
             }
         case .never:
             formatter.minimumFractionDigits = 0
@@ -95,6 +95,7 @@ public extension String.StringInterpolation {
         formatter.numberStyle = .currency
         formatter.locale = forcedLocale
         
+        Log.da("Using locale: \(forcedLocale)", log: .info)
         assert(forcedLocale.currencySymbol != "¤", "Current device does not have a valid region set. Fix this on the device in Settings > Language & Region")
         
         if showDecimals == .never {
@@ -105,18 +106,19 @@ public extension String.StringInterpolation {
         
         let maximumFraction = formatter.maximumFractionDigits
         let decimalFactor = powf(10, Float(maximumFraction))
-
+        
         switch showDecimals {
         case .always:
             formatter.minimumFractionDigits = maximumFraction
             formatter.maximumFractionDigits = maximumFraction
         case .whenRequired:
             if amount.truncatingRemainder(dividingBy: decimalFactor) > 0 {
-              formatter.minimumFractionDigits = maximumFraction
-              formatter.maximumFractionDigits = maximumFraction
+                // Decimals are needed
+                formatter.minimumFractionDigits = maximumFraction
+                formatter.maximumFractionDigits = maximumFraction
             } else {
-              // Fallthrough to zero decimals.
-              fallthrough
+                // Fallthrough to zero decimals.
+                fallthrough
             }
         case .never:
             formatter.minimumFractionDigits = 0
@@ -127,5 +129,5 @@ public extension String.StringInterpolation {
             appendLiteral(result)
         }
     }
-
+    
 }
