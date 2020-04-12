@@ -7,7 +7,7 @@ let package = Package(
     name: "JBits",
 	 platforms: [
 			  .macOS(.v10_13),
-			  .iOS(.v12),
+              .iOS(.v12),
 			  .watchOS(.v5),
               .tvOS(.v10)
 		 ],
