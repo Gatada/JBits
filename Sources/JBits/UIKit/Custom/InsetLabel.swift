@@ -1,8 +1,9 @@
 //
-//  File.swift
-//  
+//  InsetLabel.swift
+//  JBits
 //
-//  Created by Johan Basberg on 19/05/2020.
+//  Created by Johan H. W. L. Basberg on 17/08/2017.
+//  Copyright © 2017 Johan Basberg. All rights reserved.
 //
 
 import UIKit
