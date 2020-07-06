@@ -11,7 +11,13 @@ import UIKit
 
 /// A button that makes the background fill color behave as if it was
 /// an image; i.e. highlighting works as is commonly expected in iOS.
+///
+/// When the button is disabled the fill color will be desaturated, which will very likely result in different
+/// shades of gray. If this is not desired, ie. you want the same gray color for all disabled buttons,
+/// you will need to set `useDesaturation` to `false`.
 public class BackgroundFilledButton: UIButton {
+    
+    @IBInspectable var useDesaturation = true
     
     /// This is a custom button that will not  behave as expected without
     /// being a `.custom` button type.
@@ -68,7 +74,9 @@ public class BackgroundFilledButton: UIButton {
         if backgroundFill == nil {
             backgroundFill = backgroundColor
         }
-        backgroundColor = isEnabled ? backgroundFill : backgroundFill?.withSaturation(0)
+        
+        let disabledColor: UIColor? = useDesaturation ? backgroundFill?.withSaturation(0) : UIColor.systemGray
+        backgroundColor = isEnabled ? backgroundFill : disabledColor
     }
 
 

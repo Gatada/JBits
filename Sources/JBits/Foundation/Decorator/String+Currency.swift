@@ -11,9 +11,23 @@ import Foundation
 
 public extension String.StringInterpolation {
     
+    
+    /// The display style of the currency amount.
     enum CurrencyDecimalStyle {
+        
+        /// Always show the fraction of the number, even when the fraction is zero.
+        ///
+        /// This type is needed when using the currency string interpolation extension.
         case always
+        
+        /// Shows the fraction of the amount only when the fraction is non-zero.
+        ///
+        /// This type is needed when using the currency string interpolation extension.
         case whenRequired
+        
+        /// Never shows the fraction of the amount, even when the fraction is non-zero.
+        ///
+        /// This type is needed when using the currency string interpolation extension.
         case never
     }
     
@@ -39,6 +53,7 @@ public extension String.StringInterpolation {
         formatter.numberStyle = .currency
         formatter.locale = forcedLocale
         
+        Log.da("Currency amount string interpolation is using locale: \(forcedLocale)", log: .info)
         assert(forcedLocale.currencySymbol != "¤", "Current device does not have a valid region set. Fix this on the device in Settings > Language & Region")
         
         if showDecimals == .never {
@@ -87,7 +102,7 @@ public extension String.StringInterpolation {
     /// ```
     ///
     /// - Parameters:
-    ///   - amount: The integer value including the fraction.
+    ///   - amount: The float value of the amount.
     ///   - showDecimals: The `CurrencyDecimalStyle` which indicates how many digits are shown of the fraction.
     ///   - forcedLocale: The locale with a valid ISO identifier.
     mutating func appendInterpolation(floatAmount amount: Float, showDecimals: CurrencyDecimalStyle, forcedLocale: Locale = Locale.current) {
@@ -95,7 +110,7 @@ public extension String.StringInterpolation {
         formatter.numberStyle = .currency
         formatter.locale = forcedLocale
         
-        Log.da("Using locale: \(forcedLocale)", log: .info)
+        Log.da("Currency amount string interpolation is using locale: \(forcedLocale)", log: .info)
         assert(forcedLocale.currencySymbol != "¤", "Current device does not have a valid region set. Fix this on the device in Settings > Language & Region")
         
         if showDecimals == .never {

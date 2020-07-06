@@ -6,30 +6,17 @@
 //  Copyright © 2017 Johan Basberg. All rights reserved.
 //
 
-import UIKit
-
-extension Character {
-    
-    func cgPath(withFont font: UIFont) -> CGPath {
-        let unichars = [UniChar](String(self).utf16)
-        var glyphs = [CGGlyph](repeating: 0, count: unichars.count)
-        let gotGlyphs: Bool = CTFontGetGlyphsForCharacters(font, unichars, &glyphs, unichars.count)
-        
-        guard gotGlyphs, let glyph = glyphs.first, let cgpath = CTFontCreatePathForGlyph(font, glyph, nil) else {
-            fatalError("No path created for character")
-        }
-        
-        return cgpath
-    }
-}
+import Foundation
 
 extension Character: Codable {
     
+    /// Adds comformance to encoding a `Character`.
     public func encode(to encoder: Encoder) throws {
         var container = encoder.unkeyedContainer()
         try container.encode(String(self))
     }
     
+    /// Adds comformance to decode a `Character`.
     public init(from decoder: Decoder) throws {
         var container = try decoder.unkeyedContainer()
         let string = try container.decode(String.self)
