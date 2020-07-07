@@ -1,5 +1,5 @@
 //
-//  String+Currency.swift
+//  String.StringInterpolations.swift
 //  JBits
 //
 //  Created by Johan Basberg on 18/02/2020.
@@ -145,4 +145,14 @@ public extension String.StringInterpolation {
         }
     }
     
+    
+    mutating func appendInterpolation(memoryLocationFor instance: AnyObject?) {
+        guard let object = instance else {
+            appendLiteral("nil")
+            return
+        }
+        let opaque: UnsafeMutableRawPointer = Unmanaged.passUnretained(object).toOpaque()
+        appendLiteral(String(describing: opaque))
+    }
 }
+
