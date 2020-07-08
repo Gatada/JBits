@@ -12,12 +12,12 @@ import UIKit
 ///
 /// Use the `currentOffset` ranging from 0 to 1 to determine the angle of the chevron. A value of 0
 /// means the handle is straight, while a value of 1 means a chevron will be drawn.
-@IBDesignable class ChevronHandle: UIView {
+@IBDesignable public class ChevronHandle: UIView {
     
-    var currentOffset: CGFloat = 1
+    public var currentOffset: CGFloat = 1
     @IBInspectable var chevronColor: UIColor = UIColor.systemGray
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         drawDynamicChevron(color: chevronColor, chevronAngled: currentOffset)
     }
     
@@ -42,7 +42,7 @@ import UIKit
         bezierPath.lineJoinStyle = .round
         
         color.setStroke()
-        bezierPath.lineWidth = 6
+        bezierPath.lineWidth = 5
         bezierPath.stroke()
         
         context.restoreGState()
