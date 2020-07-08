@@ -8,6 +8,12 @@
 
 import UIKit
 
+public enum ParalaxAxis {
+    case both
+    case y
+    case x
+}
+
 public extension UIView {
     
     /// A pleasing shake animation using keyframe animations.
@@ -45,6 +51,48 @@ public extension UIView {
         pulseAnimation.autoreverses = true
         pulseAnimation.repeatCount = 1
         self.layer.add(pulseAnimation, forKey: animationKey)
+    }
+    
+    /// Adds a paralax effect to the provided view.
+    func addParallax(withFactor factor: Int, along axis: ParalaxAxis = .both) {
+        
+        let group = UIMotionEffectGroup()
+        var effects = [UIInterpolatingMotionEffect]()
+
+        if axis == .both || axis == .x {
+            let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+            horizontal.minimumRelativeValue = -factor
+            horizontal.maximumRelativeValue = factor
+            effects.append(horizontal)
+        }
+        
+        if axis == .both || axis == .y {
+            let vertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+            vertical.minimumRelativeValue = -factor
+            vertical.maximumRelativeValue = factor
+            effects.append(vertical)
+        }
+        
+        group.motionEffects = effects
+        self.addMotionEffect(group)
+    }
+    
+    /// Call to specify exactly which corner should have a radius.
+    func cornerRadii(_ radius: CGFloat, of corners: UIRectCorner, borderColor: UIColor) {
+        let radii = CGSize(width: radius, height: radius)
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: radii).cgPath
+        layer.mask = maskLayer
+    }
+    
+    /// Adds a drop shadow to the view.
+    func addShadow(withColor color: UIColor, withOffset offset: CGSize = CGSize(width: 0, height: -3)) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = offset
+        layer.shadowOpacity = 0.7
+        layer.shadowRadius = 8
+        layer.masksToBounds = false
+        backgroundColor = .clear
     }
     
 }

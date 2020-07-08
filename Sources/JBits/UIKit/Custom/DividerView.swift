@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Creates a view with an optional hairline at the top, and optional hairline at the bottom.
 class DividerView: UIView {
 
     @IBInspectable var hairlineColor: UIColor? = nil
