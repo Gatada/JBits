@@ -95,4 +95,43 @@ public extension UIView {
         backgroundColor = .clear
     }
     
+    
+    /// Creates a rounded visual effects view containing an activity indicator.
+    ///
+    /// The spinner is fully constrained and ready to be added where needed.
+    /// The size of the view is 60 × 60 points.
+    ///
+    /// - Returns: The spinner view.
+    static func createSpinner() -> UIView {
+        
+        let spinnerBackdrop = UIView()
+        spinnerBackdrop.translatesAutoresizingMaskIntoConstraints = false
+        spinnerBackdrop.layer.masksToBounds = true
+        spinnerBackdrop.layer.cornerRadius = 22
+        spinnerBackdrop.backgroundColor = .clear
+        
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = spinnerBackdrop.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        spinnerBackdrop.insertSubview(blurEffectView, at: 0)
+                    
+        let spinner = UIActivityIndicatorView()
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        
+        spinnerBackdrop.addSubview(spinner)
+        
+        spinnerBackdrop.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        spinnerBackdrop.heightAnchor.constraint(equalToConstant: 60).isActive = true
+
+        spinner.widthAnchor.constraint(equalTo: spinnerBackdrop.widthAnchor).isActive = true
+        spinner.heightAnchor.constraint(equalTo: spinnerBackdrop.heightAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: spinnerBackdrop.centerYAnchor).isActive = true
+        spinner.centerXAnchor.constraint(equalTo: spinnerBackdrop.centerXAnchor).isActive = true
+
+        return spinnerBackdrop
+    }
+
+    
 }
