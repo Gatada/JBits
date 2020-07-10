@@ -28,6 +28,16 @@ public class BackgroundFilledButton: UIButton {
     /// Used to retain original background color.
     private var backgroundFill: UIColor?
     
+    public var fillColor: UIColor? {
+        set {
+            backgroundFill = newValue
+            updateButtonState()
+        }
+        get {
+            return backgroundFill
+        }
+    }
+    
     /// While the button is higlighted a 30% shadow is added to the
     /// background color.
     override public var isHighlighted: Bool {
