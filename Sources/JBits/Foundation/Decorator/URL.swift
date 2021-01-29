@@ -12,7 +12,8 @@ public extension URL {
     
     /// Will append the query item and value to the URL.
     ///
-    /// No HTML entity formatting is done to the received strings.
+    /// This is a somewhat costly process.
+    /// - Important: No HTML entity formatting is done to the received strings.
     /// - Parameters:
     ///   - queryItem: The percent encoded query string that will hold a value.
     ///   - value: A percent encoded string assigned to the query item.

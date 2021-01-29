@@ -123,9 +123,15 @@ import AVFoundation
 public protocol AudioDelegateAsset {
     var filename: String { get }
     var filetype: String { get }
+    
+    /// The volume of the sound being played.
+    ///
+    /// A value between 0 and 1, where 0 is inaudible and
+    /// 1 means playback at recorded level.
+    var playbackVolume: Float { get }
 }
 
-extension AudioDelegateAsset {
+private extension AudioDelegateAsset {
     var rawValue: String {
         "\(filename).\(filetype)"
     }
@@ -134,6 +140,11 @@ extension AudioDelegateAsset {
 public protocol AudioDelegateAssetProvider {
     var audioAssets: [AudioDelegateAsset] { get }
     var isAudioMuted: Bool { get }
+    
+    /// This asset, if provided, will be played if the requested asset is still playing.
+    ///
+    /// It would be best to use an audio asset with very short duration.
+    var fallBackAudioAsset: AudioDelegateAsset? { get }
 }
 
 public class AudioDelegate {
@@ -144,7 +155,6 @@ public class AudioDelegate {
 
     public func assignAssetProvider(_ provider: AudioDelegateAssetProvider) {
         self.assetProvider = provider
-        prepareAudioAssets(provider.audioAssets)
     }
     
     public func refreshAudioAssets() {
@@ -154,6 +164,9 @@ public class AudioDelegate {
         }
         audioPlayers = [:]
         prepareAudioAssets(provider.audioAssets)
+        if let fallbackAsset = provider.fallBackAudioAsset {
+            prepareAudioAssets([fallbackAsset])
+        }
     }
 
     
@@ -197,8 +210,12 @@ public class AudioDelegate {
         
         func preparePlayerForAsset(_ asset: AudioDelegateAsset) {
             if let path = Bundle.main.path(forResource: asset.filename, ofType: asset.filetype) {
-                let audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                audioPlayer?.prepareToPlay()
+                guard let audioPlayer = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: path)) else {
+                    assertionFailure("Failed to prepare audio with path: \(path)")
+                    return
+                }
+                audioPlayer.prepareToPlay()
+                audioPlayer.volume = asset.playbackVolume
                 audioPlayers[asset.rawValue] = audioPlayer
             }
         }
@@ -217,11 +234,23 @@ public class AudioDelegate {
             return
         }
 
-        guard !provider.isAudioMuted, let asset = notification.userInfo?["AudioDelegateAsset"] as? AudioDelegateAsset else {
-            assertionFailure("Audio muted, or notification did not contain a valid AudioDelegateAsset")
+        guard !provider.isAudioMuted else {
+            return
+        }
+
+        guard let asset = notification.userInfo?["AudioDelegateAsset"] as? AudioDelegateAsset else {
+            assertionFailure("Notification did not contain a valid AudioDelegateAsset")
             return
         }
         
-        audioPlayers[asset.rawValue]?.play()
+        if audioPlayers[asset.rawValue]?.isPlaying == true {
+            // Fallback to very short alternative sound.
+            if let asset = assetProvider?.fallBackAudioAsset {
+                audioPlayers[asset.rawValue]?.play()
+            }
+        } else {
+            audioPlayers[asset.rawValue]?.play()
+        }
+            
     }
 }
