@@ -12,7 +12,7 @@ public protocol JBitDeviceMotionDelegate: class {
     
     var deviceOrientation: UIDevice.Orientation { get }
     
-    func deviceOrientationChanged(from: UIDevice.Orientation, to: UIDevice.Orientation)
+    func deviceOrientationChanged(to: UIDevice.Orientation)
     
 }
 
@@ -62,10 +62,9 @@ public extension UIDevice {
     }
     
     func handleAcceleration(_ acceleration: CMAcceleration, delegate: JBitDeviceMotionDelegate) {
-        let currentOrientation = Orientation(acceleration: acceleration)
-        if let orientation = currentOrientation, orientation != delegate.deviceOrientation {
-            delegate.deviceOrientationChanged(from: delegate.deviceOrientation, to: orientation)
-            Log.da("New Device Orientation: \(orientation)", log: .info)
+        if let currentOrientation = Orientation(acceleration: acceleration), currentOrientation != delegate.deviceOrientation {
+            delegate.deviceOrientationChanged(to: currentOrientation)
+            // Log.da("New Device Orientation: \(currentOrientation.rawValue)", log: .info)
         }
     }
     
