@@ -17,7 +17,7 @@ import UIKit
 /// you will need to set `useDesaturation` to `false`.
 public class BackgroundFilledButton: UIButton {
     
-    @IBInspectable var useDesaturation = true
+    @IBInspectable public var useDesaturation = true
     
     /// This is a custom button that will not  behave as expected without
     /// being a `.custom` button type.

@@ -132,6 +132,4 @@ public extension UIView {
 
         return spinnerBackdrop
     }
-
-    
 }
