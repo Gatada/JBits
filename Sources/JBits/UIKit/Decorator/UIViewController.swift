@@ -31,8 +31,6 @@ public extension UIViewController {
     /// Returns the currently visible view controller.
     ///
     /// Untested, may be removed in a future version.
-    
-    @available(*, deprecated, message: "Please use isOnScreen instead; the new and more approriately named state variable")
     func visibleViewController() -> UIViewController? {
         guard !(self is UINavigationController) else {
             let navVC = self as! UINavigationController
