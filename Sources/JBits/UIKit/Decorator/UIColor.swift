@@ -90,11 +90,13 @@ public extension UIColor {
     
     /// Returns a new `UIColor` with the provided saturation level.
     ///
-    /// With a new saturation value of 0 the returned color is unchanged. Providing
-    /// a value of 1 will return a fully desaturated color.
+    /// With a saturation value of 0 the returned color is optically desaturated, resulting in a
+    /// grayscale color with a matching brightness.
+    ///
+    /// A saturation level between zero and -1 will push the color to the inverted hue.
     ///
     /// If the color is not in a compatible color space, the returned color will
-    /// be the same as the source color (i.e. unchanged); additionally an assert
+    /// be the same as the source color (i.e. unchanged); additionally an assertion
     /// failure is thrown.
     ///
     /// - Parameter newSaturation: The new saturation level, ranging from 0 (no change) to 1 (full desaturated).
@@ -120,6 +122,28 @@ public extension UIColor {
         
         return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: current.alpha)
     }
-    
+//    
+//    func withBrightness(_ newLevel: CGFloat) -> UIColor {
+//        var current: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) = (0, 0, 0, 0)
+//        
+//        guard getRed(&current.red, green: &current.green, blue: &current.blue, alpha: &current.alpha) else {
+//            assertionFailure("Color is not in a compatible color space")
+//            return self
+//        }
+//
+//        let brightnessRed = 0.299 * pow(current.red, 2)
+//        let brightnessGreen = 0.587 * pow(current.green, 2)
+//        let brightnessBlue = 0.114 * pow(current.blue, 2)
+//        
+//        let lowerLimit = min(brightnessBlue, brightnessRed, brightnessGreen)
+//        let upperLimit = max(brightnessBlue, brightnessRed, brightnessGreen)
+//        
+//        
+//
+//        let perceivedBrightness = sqrt(brightnessRed + brightnessGreen + brightnessBlue)
+//        
+//        return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: current.alpha)
+//    }
+//    
     
 }
