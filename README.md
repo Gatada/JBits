@@ -27,7 +27,7 @@ I will not keep this readme file up-to-date. However, I'll try to present the mo
 
 # Result of using withSaturation(_:)
 
-The top half shows the result of using ``UIColor.withSaturation(_:)`` against 40 different colours, while the bottom half shows the same ``UIColor`` created with the same hue and brightness, but saturation set to zero.  
+The top half shows the result of using ``UIColor.withSaturation(_:)`` against 40 different colours (with a saturation level of zero), while the bottom half shows the same ``UIColor`` instantiated with the same hue and brightness, and saturation set to zero (provided by Apple).  
 
 ![Optically Desaturated Colours](/Media/comparison.png)
 
