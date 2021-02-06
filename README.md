@@ -20,6 +20,10 @@ I will not keep this readme file up-to-date. However, I'll try to present the mo
 
 - **CGPath from a Character**; turn a character into a CGPath the easy way.
 - **Optically correct saturation adjustment**; unlike available saturation tweaking, my method actually works! It simply removes the color of any supported color - just as would expected.
+
+![Optically Desaturated Colours](/Media/comparison.png)
+
+
 - **Contrasting Color**; a very convenient way to create a new color that harmonizes with another.
 - **Throb and shake animations for UIView**; nice visual effects to use in certain situations - like when an element is tapped or refreshed.
 - **An activity spinner on a visual-effects backdrop**; rounded corners, fully constrainted, all ready to be dropped into your view stack.
