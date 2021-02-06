@@ -21,7 +21,13 @@ I will not keep this readme file up-to-date. However, I'll try to present the mo
 - **CGPath from a Character**; turn a character into a CGPath the easy way.
 - **Optically correct saturation adjustment**; unlike available saturation tweaking, my method actually works! It simply removes the color of any supported color - just as would expected.
 
+The top half shows the result of using ``UIColor.withSaturation(_:)`` against 40 different colours, while the bottom half shows the same ``UIColor`` created with the same hue and brightness, but saturation set to zero.  
+
 ![Optically Desaturated Colours](/Media/comparison.png)
+
+Below you see what happens to a color when saturation range from -1 to 1 using ``UIColor.withSaturation(_:)``.  
+
+![Optically Desaturated Colours](/Media/fullrange.png)
 
 
 - **Contrasting Color**; a very convenient way to create a new color that harmonizes with another.
