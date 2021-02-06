@@ -24,7 +24,8 @@ I will not keep this readme file up-to-date. However, I'll try to present the mo
 - **Throb and shake animations for UIView**; nice visual effects to use in certain situations - like when an element is tapped or refreshed.
 - **An activity spinner on a visual-effects backdrop**; rounded corners, fully constrainted, all ready to be dropped into your view stack.
 
-### Result of using withSaturation(_:)
+
+# Result of using withSaturation(_:)
 
 The top half shows the result of using ``UIColor.withSaturation(_:)`` against 40 different colours, while the bottom half shows the same ``UIColor`` created with the same hue and brightness, but saturation set to zero.  
 
