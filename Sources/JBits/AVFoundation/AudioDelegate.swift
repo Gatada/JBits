@@ -229,12 +229,16 @@ public class AudioDelegate {
     // MARK: - Interaction
     
     @objc func play(_ notification: Notification) {
+        
+        Log.da("Notification to play sound received..", log: .info)
+        
         guard let provider = assetProvider else {
             assertionFailure("No asset provider defined for AudioDelegate")
             return
         }
 
         guard !provider.isAudioMuted else {
+            Log.da("Sounds are muted, bailing.", log: .info)
             return
         }
 
@@ -247,9 +251,11 @@ public class AudioDelegate {
             // Fallback to very short alternative sound.
             if let asset = assetProvider?.fallBackAudioAsset {
                 audioPlayers[asset.rawValue]?.play()
+                Log.da("🎵 Requested player still playing, playing fallback sound..", log: .info)
             }
         } else {
             audioPlayers[asset.rawValue]?.play()
+            Log.da("🎵 Playing \"\(asset.rawValue)\"..", log: .info)
         }
             
     }
