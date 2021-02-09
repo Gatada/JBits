@@ -1,0 +1,2 @@
+/* The localized error returned when PersistentData.save(_:as:saveInDocumentDirectory:) failed to encode data needed for file. */
+"Failed to encode data needed for save operation; no file was created." = "Failed to encode data needed for save operation; no file was created.";
