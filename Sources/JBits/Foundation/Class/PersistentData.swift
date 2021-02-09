@@ -29,7 +29,6 @@ public enum PersistentData {
     ///   - object: Encodable to save
     ///   - fileName: what to name the file where the encodable data will be saved
     ///   - isDocument: Set to true so save file to documents directory. By default the caches directory is used.
-    @discardableResult
     public static func save<T: Encodable>(_ object: T, as fileName: String, saveInDocumentDirectory isDocument: Bool = false) throws -> Bool {
         
         let fileFolder: FileManager.SearchPathDirectory = isDocument ? .documentDirectory : .cachesDirectory
