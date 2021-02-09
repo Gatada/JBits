@@ -12,7 +12,7 @@ public enum PersistentDataError: Error {
     case failedToEncodeData
 }
 
-public extension PersistentDataError: LocalizedError {
+extension PersistentDataError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .failedToEncodeData:
@@ -45,7 +45,7 @@ public enum PersistentData {
             let data = try encoder.encode(object)
             return FileManager.default.createFile(atPath: "\(url.path)/\(fileName)", contents: data, attributes: nil)
         } catch {
-            throw PersistentDataError.failedToCreateFile
+            throw PersistentDataError.failedToEncodeData
         }
     }
     
@@ -92,7 +92,6 @@ public enum PersistentData {
         
         do {
             try FileManager.default.removeItem(at: url)
-            Log.da(
             return true
         } catch {
             return false
