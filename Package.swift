@@ -7,7 +7,7 @@ let package = Package(
     name: "JBits",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v12),
+        .iOS(.v13),
         .watchOS(.v5),
         .tvOS(.v11)
     ],

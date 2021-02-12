@@ -83,6 +83,7 @@ public extension UIView {
         let maskLayer = CAShapeLayer()
         maskLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: radii).cgPath
         layer.mask = maskLayer
+        layer.borderColor = borderColor.cgColor
     }
     
     /// Adds a drop shadow to the view.
