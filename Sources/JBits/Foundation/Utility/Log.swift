@@ -15,9 +15,6 @@ public enum Log {
     
     // MARK: - Properties
     
-    /// By default the output is associated with this subsystem.
-    private static var subsystem = Bundle.main.bundleIdentifier!
-    
     /// The logging category to be used for the log message.
     ///
     /// The category will determine if the message is printed only
@@ -92,11 +89,6 @@ public enum Log {
             }
         }
         
-        /// Mapping a Category to a suitable OSLog type.
-        var osLogEquivalent: OSLog {
-            return OSLog(subsystem: subsystem, category: self.rawValue)
-        }
-        
         /// Maps the Category to a suitable OSLogType.
         ///
         /// Only some of the existing OSLogTypes seem to appear in
@@ -113,10 +105,6 @@ public enum Log {
         }
     }
 
-    /// The default subsystem used when logging.
-    public static let mainBundle = Bundle.main.bundleIdentifier!
-    
-    
     // MARK: - API
     
     /// Use to temporary log events in the Xcode debug area.
@@ -128,8 +116,8 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
-    public static func da(_ messages: String..., log: Log.Category, prefix customEmoji: Character? = nil, subsystem: String = Log.mainBundle, terminator: String = "\n") {
-        assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, customEmoji: customEmoji, subsystem: subsystem))
+    public static func da(_ messages: String..., log: Log.Category, prefix customEmoji: Character? = nil, terminator: String = "\n") {
+        assert(Log.debugAreaPrint(messages, terminator: terminator, log: log, customEmoji: customEmoji))
     }
 
     
@@ -151,9 +139,9 @@ public enum Log {
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
     ///   - terminator: The string appended to the end of the messages. By default this is `\n`.
-    public static func os(_ messages: String..., log: Log.Category, prefix customEmoji: Character? = nil, subsystem: String = Log.mainBundle, terminator: String = "\n") {
+    public static func os(_ messages: String..., log: Log.Category, prefix customEmoji: Character? = nil, terminator: String = "\n") {
         let resultingMessage = messages.reduce("") { $0 + " " + $1 }
-        os_log("%{private}@", log: log.osLogEquivalent, type: log.osLogTypeEquivalent, "\(customEmoji ?? log.emoji) \(subsystem) -\(resultingMessage)\(terminator)")
+        os_log("%{private}@", type: log.osLogTypeEquivalent, "\(customEmoji ?? log.emoji) -\(resultingMessage)\(terminator)")
     }
 
 
@@ -169,15 +157,15 @@ public enum Log {
     ///   - terminator: The string appended to the message. By default this is `\n`.
     ///   - log: Use this to group logs into a suitable `Category`.
     ///   - subsystem: A string describing a subsystem. Default value is the main bundle identifier.
-    private static func debugAreaPrint(_ messages: [String], terminator: String, log: Log.Category, customEmoji: Character? = nil, subsystem: String) -> Bool {
-        print("\(customEmoji ?? log.emoji) \(timestamp()) \(subsystem) –", terminator: "")
+    private static func debugAreaPrint(_ messages: [String], terminator: String, log: Log.Category, customEmoji: Character? = nil) -> Bool {
+        print("\(customEmoji ?? log.emoji) \(timestamp()) –", terminator: "")
         let resultingMessage = messages.reduce("") { $0 + " " + $1 }
         print(resultingMessage, terminator: terminator)
         return true
     }
     
     /// Creates a timestamp used as part of the temporary logging in the debug area.
-    static func timestamp() -> String {
+    public static func timestamp() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss.SSS"
