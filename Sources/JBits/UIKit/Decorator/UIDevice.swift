@@ -6,7 +6,10 @@
 //
 
 import UIKit
+
+#if !os(tvOS)
 import CoreMotion
+#endif
 
 public protocol JBitDeviceMotionDelegate: class {
     
