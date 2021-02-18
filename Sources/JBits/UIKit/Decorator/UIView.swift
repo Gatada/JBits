@@ -133,4 +133,18 @@ public extension UIView {
 
         return spinnerBackdrop
     }
+    
+    /// Briefly scales the view up, then back down making it look like it was dropped from above.
+    func dropIn() {
+        let animationKey = "DropIn"
+        let rotateAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        
+        rotateAnimation.calculationMode = .cubic
+        rotateAnimation.values = [1.3, 1.1, 1.0]
+        rotateAnimation.keyTimes = [0, 0.3, 1]
+        rotateAnimation.duration = 0.2
+        
+        self.layer.add(rotateAnimation, forKey: animationKey)
+        CATransaction.commit()
+    }
 }
