@@ -8,8 +8,8 @@
 import UIKit
 
 #if !os(tvOS)
+
 import CoreMotion
-#endif
 
 public protocol JBitDeviceMotionDelegate: class {
     
@@ -88,3 +88,5 @@ public extension UIDevice {
         manager.stopAccelerometerUpdates()
     }
 }
+
+#endif

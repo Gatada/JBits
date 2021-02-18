@@ -9,7 +9,9 @@ import UIKit
 
 public extension UIView {
     
+    #if !os(tvOS)
     static var hapticSelection: UISelectionFeedbackGenerator?
+    #endif
     
     func gestureHasState(_ state: UIGestureRecognizer.State) {
         switch state {
@@ -33,7 +35,9 @@ public extension UIView {
     /// Try to do this a second or so before the haptic is triggered. Longer than that, and
     /// the Taptic engine will turn off again.
     func prepareHapticFeedback() {
+        #if !os(tvOS)
         UIView.hapticSelection = UISelectionFeedbackGenerator()
+        #endif
         UIView.hapticSelection?.prepare()
     }
     
@@ -46,6 +50,8 @@ public extension UIView {
     
     /// Optionally call this to release the haptic generator.
     func doneWithHapticFeedback() {
+        #if !os(tvOS)
         UIView.hapticSelection = nil
+        #endif
     }
 }
